@@ -1,0 +1,22 @@
+name: Keep Hugging Face Space Alive
+
+on:
+  schedule:
+    # Trigger every 4 hours (cron format)
+    - cron: '0 */4 * * *'
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Check out repository code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Make a simple HTTP request to healthcheck URL
+      - name: Healthcheck Hugging Face Space
+        run: |
+          curl -X GET "https://feedlight42-text2picto.hf.space/health"
+          
+        continue-on-error: false
