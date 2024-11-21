@@ -1,6 +1,7 @@
 name: Keep Hugging Face Space Alive
 
 on:
+  workflow_dispatch:
   schedule:
     # Trigger every 4 hours (cron format)
     - cron: '0 */4 * * *'
